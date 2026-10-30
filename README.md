@@ -29,7 +29,8 @@ The players play in five leagues: Bundesliga, Premier League, La Liga, Serie A a
 | passingPerc, dribblePerc, duelAerialPerc, tacklingPerc | rates for passing, dribbling, aerial duels and tackling, shares between 0 and 1 |
 | foulsPerGame | fouls per game |
 | yellowCard, redCard | number of yellow and red cards in the season |
-| wikipedia, youtube | popularity indices on a log scale (natural logarithm of a count; the smallest values are 0, 0.69 and 1.10, which are ln 1, ln 2 and ln 3) |
+| wikipedia | natural logarithm of the number of Wikipedia page views of the player |
+| youtube | natural logarithm of the number of YouTube views for the player |
 | position | Defender, Midfielder or Forward |
 
 All scripts read this one file. They drop `name` and `team` before modelling, because names and clubs are not predictors.
