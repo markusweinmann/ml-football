@@ -1,6 +1,6 @@
 """Predicting Market Values with Football Data: Trees and Ensembles (video 22), Python version.
 
-Run from this folder, after 00_prepare_data.py (or 00_prepare_data.R):   python 22_trees_and_ensembles.py
+Run from this folder:   python 22_trees_and_ensembles.py
 The script reads ../../data/players.csv (drops name and team) and ../../data/folds_2013.json (relative to this folder).
 Runtime: about a minute or two (30 XGBoost settings x 5 folds; see ../README.md for the measured time).
 

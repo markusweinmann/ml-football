@@ -1,6 +1,6 @@
 # Predicting Market Values with Football Data: Trees and Ensembles (video 22), R version.
 #
-# Run from this folder, after 00_prepare_data.R:   Rscript 22_trees_and_ensembles.R
+# Run from this folder:   Rscript 22_trees_and_ensembles.R
 # The script reads ../../data/players.csv (relative to this folder) and drops name and team before modelling.
 # Runtime: the XGBoost grid (30 settings x 5 folds, 500 trees each) is the slow part.
 # Expect several minutes in total; see ../README.md for the measured time.

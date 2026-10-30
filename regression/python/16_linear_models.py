@@ -1,6 +1,6 @@
 """Predicting Market Values with Football Data: Linear Models (video 16), Python version.
 
-Run from this folder, after 00_prepare_data.py (or 00_prepare_data.R):   python 16_linear_models.py
+Run from this folder:   python 16_linear_models.py
 The script reads ../../data/players.csv (drops name and team) and ../../data/folds_2013.json (relative to this folder).
 
 Plan (same as in the R version):
