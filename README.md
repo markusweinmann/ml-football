@@ -3,13 +3,14 @@
 Data and code for the YouTube series "Machine Learning Explained with Football Data" by Markus Weinmann (channel @profweinmann).
 Playlist: https://www.youtube.com/playlist?list=PLSNXHvg1xOMw
 
-This repository covers the regression block, so far these videos:
+This repository covers the regression block and one application of the classification block, so far these videos:
 
 - "Predicting Market Values with Football Data: Linear Models in R/Python" (video 16)
 - "Predicting Market Values with Football Data: Trees and Ensembles in R/Python" (video 22)
+- "Classifiers Compared with Football Data in R" and "Classifiers Compared with Football Data in Python" (video 38)
 
-Each video comes in an R and a Python version. The scripts are in `regression/R` and `regression/python`.
-How to run them is explained in [regression/README.md](regression/README.md).
+Each video comes in an R and a Python version. The scripts are in `regression/R`, `regression/python`, `classification/R` and `classification/python`.
+How to run them is explained in [regression/README.md](regression/README.md) and [classification/README.md](classification/README.md).
 
 ## Data
 
@@ -33,11 +34,28 @@ The players play in five leagues: Bundesliga, Premier League, La Liga, Serie A a
 | youtube | natural logarithm of the number of YouTube views for the player |
 | position | Defender, Midfielder or Forward |
 
-All scripts read this one file. They drop `name` and `team` before modelling, because names and clubs are not predictors.
+The regression scripts read this file. They drop `name` and `team` before modelling, because names and clubs are not predictors.
 The regression videos use the 2013 season (training) and the 2014 season (test) and keep players worth at most 10 million euros.
 
 `data/folds_2013.json` holds the five cross-validation folds of the 2013 training players. They were drawn in R
 (`set.seed(2026)`, `vfold_cv(player_train, v = 5)`). The Python scripts read them, so R and Python use the same folds.
+
+### Data for the classification video
+
+`data/players_classification.csv` has 3,578 rows and 18 columns. It is derived from `data/players.csv` for video 38:
+
+- The columns `name` and `team` are removed.
+- The column `forward` is added: 1 if `position` is "Forward", 0 for Defender and Midfielder. This is the outcome of the classifiers.
+- `marketvalue` is rounded to whole euros. All other columns are identical to `data/players.csv`.
+- The column `position` stays in the file. The scripts do not use it as a predictor, because it gives the answer away.
+
+The other columns are the same as in the table above. The file is made for teaching: it lets viewers reproduce the video.
+It contains no names or clubs. It must not be used to re-identify players, for example by matching the rows with other sources.
+The section "Data protection" below, including the way to have rows removed, applies to this file as well.
+
+`data/folds_classification_2013.json` holds the five cross-validation folds of the 2013 training players for video 38
+(row positions, counted from 1, within the 1,533 training players worth at most 10 million euros).
+They were drawn in R (`set.seed(2026)`, `vfold_cv(player_train, v = 5)`). The Python script reads them, so R and Python use the same folds.
 
 ### Source and license
 
