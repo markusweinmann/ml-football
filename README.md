@@ -57,6 +57,26 @@ The section "Data protection" below, including the way to have rows removed, app
 (row positions, counted from 1, within the 1,533 training players worth at most 10 million euros).
 They were drawn in R (`set.seed(2026)`, `vfold_cv(player_train, v = 5)`). The Python script reads them, so R and Python use the same folds.
 
+### Data for the causal machine learning video
+
+`data/players_causal.csv` has 530 rows and 19 columns. It is derived from the same public sources as `data/players.csv`
+and covers the seasons 2012, 2013 and 2014, for video 43 and the machine learning course at the University of Cologne:
+
+- Selection: the players who appear in all three seasons and are worth less than 10 million euros in each of them.
+  One row is one player; the outcome is the market value in the 2014 season.
+- Linking: the data have no player ID. The seasons were linked by the name of the player and his age.
+- Treatment: `minutes_2013`, the minutes played in 2013. A "regular" is a player with at least 2,000 minutes
+  (247 of the 530 players).
+- Controls: `age`, `height`, `position`, `league_2013`, `marketvalue_2012` and ten performance and popularity values
+  from 2012 (`minutes_2012` to `youtube_2012`, defined as in `players.csv`). Everything is known before the 2013 minutes.
+- `marketvalue` (2014) and `marketvalue_2012` are in whole euros. Divide by 1,000,000 for millions.
+- The columns `name`, `team` and `season` are removed. The rows are shuffled with a fixed seed,
+  so the order does not follow the order of `players.csv`.
+
+The file is made for teaching: it lets viewers reproduce video 43 and the course session.
+It contains no names or clubs. It must not be used to re-identify players, for example by matching the rows with other sources.
+The section "Data protection" below, including the way to have rows removed, applies to this file as well.
+
 ### Source and license
 
 Compiled from publicly available sources for teaching.
