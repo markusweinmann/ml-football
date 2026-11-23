@@ -3,14 +3,16 @@
 Data and code for the YouTube series "Machine Learning Explained with Football Data" by Markus Weinmann (channel @profweinmann).
 Playlist: https://www.youtube.com/playlist?list=PLSNXHvg1xOMw
 
-This repository covers the regression block and one application of the classification block, so far these videos:
+This repository covers the regression block and one application each of the classification and the unsupervised learning block, so far these videos:
 
 - "Predicting Market Values with Football Data: Linear Models in R/Python" (video 16)
 - "Predicting Market Values with Football Data: Trees and Ensembles in R/Python" (video 22)
 - "Classifiers Compared with Football Data in R" and "Classifiers Compared with Football Data in Python" (video 38)
+- "Unsupervised Learning with Football Data in R" and "Unsupervised Learning with Football Data in Python" (video 49)
 
-Each video comes in an R and a Python version. The scripts are in `regression/R`, `regression/python`, `classification/R` and `classification/python`.
-How to run them is explained in [regression/README.md](regression/README.md) and [classification/README.md](classification/README.md).
+Each video comes in an R and a Python version. The scripts are in `regression/`, `classification/` and `unsupervised/`, each with an `R` and a `python` folder.
+How to run them is explained in [regression/README.md](regression/README.md), [classification/README.md](classification/README.md)
+and [unsupervised/README.md](unsupervised/README.md).
 
 ## Data
 
@@ -56,6 +58,19 @@ The section "Data protection" below, including the way to have rows removed, app
 `data/folds_classification_2013.json` holds the five cross-validation folds of the 2013 training players for video 38
 (row positions, counted from 1, within the 1,533 training players worth at most 10 million euros).
 They were drawn in R (`set.seed(2026)`, `vfold_cv(player_train, v = 5)`). The Python script reads them, so R and Python use the same folds.
+
+### Data for the unsupervised learning video
+
+`data/players_unsupervised.csv` has 1,788 rows and 17 columns. It holds the 2014 rows of `data/players_classification.csv`
+without the column `forward`, for video 49:
+
+- Every value is identical to `data/players_classification.csv` (and so `marketvalue` is in whole euros, without `name` and `team`).
+- The column `position` stays in the file. The scripts do not use it for clustering, only to compare it with the clusters.
+- The scripts keep the 1,530 players worth at most 10 million euros, as the video does.
+
+The file is made for teaching: it lets viewers reproduce the video.
+It contains no names or clubs. It must not be used to re-identify players, for example by matching the rows with other sources.
+The section "Data protection" below, including the way to have rows removed, applies to this file as well.
 
 ### Data for the causal machine learning video
 
